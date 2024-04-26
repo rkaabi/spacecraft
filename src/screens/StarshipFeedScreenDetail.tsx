@@ -1,5 +1,5 @@
 import { Button, Chip, DataTable, List, MD3Colors } from "react-native-paper";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import FilmDetails from "~/components/FilmDetails";
 
 export const StarshipFeedScreenDetail = (props: any) => {
@@ -15,7 +15,7 @@ export const StarshipFeedScreenDetail = (props: any) => {
     films,
   } = props.route.params.item;
   return (
-    <View>
+    <ScrollView>
       <Image
         style={styles.img}
         source={{ uri: `https://picsum.photos/seed/${name}/400/200` }}
@@ -53,7 +53,7 @@ export const StarshipFeedScreenDetail = (props: any) => {
           key={filmunit}
         />
       ))}
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
