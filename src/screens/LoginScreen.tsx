@@ -1,62 +1,75 @@
-import { StatusBar } from 'expo-status-bar';
-import {SafeAreaView, StyleSheet,  View } from 'react-native';
-import {Text,TextInput,Button} from 'react-native-paper';
-import {useState} from 'react';
-import Header from '~/components/Header';
+import { useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Button, TextInput, Text } from "react-native-paper";
 
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Header from "~/components/Header";
+import { Routes } from "~/navigation/Routes";
 
-export default function LoginScreen() {
-    const [emailtxt,setEmailtxt] = useState("")
-    const [passtxt,setPasstxt] = useState("")
+
+ 
+export default function LoginScreen(props) {
+  
+  const [emailtxt, setEmailtxt] = useState("");
+  const [passtxt, setPasstxt] = useState("");
+  
+  function navigateToTerms() {
+  props.navigation.navigate(Routes.TERMS_SCREEN);
+}
+function navigateToStarshipfeed() {
+ 
+  props.navigation.navigate(Routes.STARSHIP_FEED_SCREEN);
+}
+
+
+ 
   return (
     <>
-      <Header/>
-      <TextInput style={styles.text}
-      label="Email"
-      mode='flat'
-      placeholder = 'Email ici'
-      onChangeText = {emailtxt => setEmailtxt(emailtxt)}
-      keyboardType='email-address'
+      <Header />
+      <TextInput
+        style={styles.text}
+        label="Email"
+        mode="flat"
+        placeholder="Email ici"
+        onChangeText={(emailtxt) => setEmailtxt(emailtxt)}
+        keyboardType="email-address"
       ></TextInput>
-      
-      <TextInput 
-      style={styles.text}
-      label="Password"
-      value = {passtxt}
-      secureTextEntry={true}
-      onChangeText = {passtxt => setPasstxt(emailtxt)}
-      
+
+      <TextInput
+        style={styles.text}
+        label="Password"
+        value={passtxt}
+        secureTextEntry={true}
+        onChangeText={(passtxt) => setPasstxt(emailtxt)}
       ></TextInput>
-      <Button style={styles.button}>Envoyer</Button>
-     
+      <Button style={styles.button} onPress={navigateToStarshipfeed}>Envoyer</Button>
+      <TouchableOpacity onPress={navigateToTerms}>
+      <Text> condition</Text>
+      </TouchableOpacity>
     </>
   );
- 
 }
 
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "red",
+    marginTop: 20,
+    width: "90%"
+  },
   container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center"
   },
   paragraph: {
-    margin: 24,
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    margin: 24,
+    textAlign: "center"
   },
   text: {
-    width: '90%',
-    marginTop: 10,
     borderRadius: 15,
-    
-  }, 
-  button: {
-    width: '90%',
-    marginTop: 20,
-    backgroundColor: 'red'
-  }, 
+    marginTop: 10,
+    width: "90%"
+  }
 });
