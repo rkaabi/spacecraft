@@ -28,6 +28,7 @@ module.exports = {
     "react-native/no-unused-styles": 0, // detect unused StyleSheet rules
     "react-native/no-raw-text": 0, // detect raw text outside of Text component
     "react-native/sort-styles": 0, // enforce style definitions are sorted
+    "react/no-unescaped-entities": 0,
     "@typescript-eslint/no-unused-vars": "warn", // detect unused variables
     "simple-import-sort/exports": "warn", // enforce sorting exports within module
     "simple-import-sort/imports": [

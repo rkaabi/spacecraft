@@ -11,33 +11,27 @@ import { Button, Icon } from "react-native-paper";
 import { useStarships } from "~/hooks/useStarships";
 import { Routes } from "~/navigation/Routes";
 
-
-
 export const StarshipFeedScreenApi = (props) => {
   const { isLoading, isError, error, data } = useStarships();
 
-type ItemProps = { item: { name: string; model: string; crew: string } };
+  type ItemProps = { item: { name: string; model: string; crew: string } };
 
+  const Item = ({ item }: ItemProps) => (
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.name}</Text>
+      <Text style={styles.title}>{item.model}</Text>
+      <Text style={styles.title}>{item.crew}</Text>
+      <Image
+        style={styles.img}
+        source={{ uri: `https://picsum.photos/seed/${item.name}/400/200` }}
+      />
+      <Button onPress={() => navigateToStarshipfeedDetail(item)}>Détail</Button>
+    </View>
+  );
 
-const Item = ({ item }: ItemProps) => (
-  <View style={styles.item} >
-    <Text style={styles.title}>{item.name}</Text>
-    <Text style={styles.title}>{item.model}</Text>
-    <Text style={styles.title}>{item.crew}</Text>
-    <Image
-      style={styles.img}
-      source={{ uri: `https://picsum.photos/seed/${item.name}/400/200` }}
-    />
-    <Button onPress={() => navigateToStarshipfeedDetail(item)}>Détail</Button>
-  </View>
-);
-  
-function navigateToStarshipfeedDetail(item: ItemProps) {
- 
-   props.navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, {item} );
-
-}
- 
+  function navigateToStarshipfeedDetail(item: ItemProps) {
+    props.navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { item });
+  }
 
   if (isLoading) {
     return (
@@ -72,7 +66,6 @@ function navigateToStarshipfeedDetail(item: ItemProps) {
         data={data.results}
         renderItem={({ item }) => <Item item={item} />}
         keyExtractor={(item) => item.name}
-        
       />
     </>
   );
@@ -106,5 +99,3 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
 });
-
-
