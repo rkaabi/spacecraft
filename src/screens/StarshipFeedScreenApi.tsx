@@ -1,37 +1,11 @@
-import {
-  FlatList,
-  Image,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { Button, Icon } from "react-native-paper";
+import { FlatList, StatusBar, StyleSheet, Text, View } from "react-native";
+import { Icon } from "react-native-paper";
 
+import { Card } from "~/components/Card";
 import { useStarships } from "~/hooks/useStarships";
-import { Routes } from "~/navigation/Routes";
 
-export const StarshipFeedScreenApi = (props) => {
+export const StarshipFeedScreenApi = (props: any) => {
   const { isLoading, isError, error, data } = useStarships();
-
-  type ItemProps = { item: { name: string; model: string; crew: string } };
-
-  const Item = ({ item }: ItemProps) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{item.name}</Text>
-      <Text style={styles.title}>{item.model}</Text>
-      <Text style={styles.title}>{item.crew}</Text>
-      <Image
-        style={styles.img}
-        source={{ uri: `https://picsum.photos/seed/${item.name}/400/200` }}
-      />
-      <Button onPress={() => navigateToStarshipfeedDetail(item)}>Détail</Button>
-    </View>
-  );
-
-  function navigateToStarshipfeedDetail(item: ItemProps) {
-    props.navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { item });
-  }
 
   if (isLoading) {
     return (
@@ -61,13 +35,11 @@ export const StarshipFeedScreenApi = (props) => {
   }
 
   return (
-    <>
-      <FlatList
-        data={data.results}
-        renderItem={({ item }) => <Item item={item} />}
-        keyExtractor={(item) => item.name}
-      />
-    </>
+    <FlatList
+      data={data.results}
+      renderItem={({ item }) => <Card item={item} />}
+      keyExtractor={(item) => item.name}
+    />
   );
 };
 
