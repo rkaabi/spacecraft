@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
 
     backgroundColor: "purple",
     justifyContent: "center",
-    width: "100%"
+    width: "100%",
   },
   paragraph: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
     margin: 24,
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });

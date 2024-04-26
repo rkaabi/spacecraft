@@ -1,9 +1,7 @@
-import { Alert, Image, ScrollView, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 
-export const TermsScreen = ({navigation}  ) => {
-  
-
+export const TermsScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <Appbar.Header>
@@ -107,7 +105,7 @@ export const TermsScreen = ({navigation}  ) => {
         <Image
           style={{ width: 250, height: 250, marginVertical: 32 }}
           source={{
-            uri: "https://media.giphy.com/media/krkrHAEodHgzP72rTI/giphy.gif"
+            uri: "https://media.giphy.com/media/krkrHAEodHgzP72rTI/giphy.gif",
           }}
         />
 
