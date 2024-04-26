@@ -8,11 +8,14 @@ import { Routes } from "~/navigation/Routes";
 type CardProps = {
   item: Spaceship;
 };
+interface NavigationDetailsProps {
+  navigate: (screen: string, params: { item: Spaceship }) => void;
+}
 
 export function Card({ item }: CardProps) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationDetailsProps>();
   function navigateToStarshipfeedDetail(item: Spaceship) {
-    console.log("🚀 ~ navigateToStarshipfeedDetail ~ item:", item);
+    console.log("🚀 routes ", Routes);
     navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { item });
   }
 

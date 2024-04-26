@@ -5,7 +5,7 @@ import { Button, Text, TextInput } from "react-native-paper";
 import Header from "~/components/Header";
 import { Routes } from "~/navigation/Routes";
 
-export default function LoginScreen(props) {
+export default function LoginScreen(props: any) {
   const [emailtxt, setEmailtxt] = useState("");
   const [passtxt, setPasstxt] = useState("");
 
